@@ -54,6 +54,23 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
+        /* Lenis Required Styles for Smooth Scrolling */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
+        }
+
         /* Hero specific styles */
         .hero-bg {
             /* Garage Epoxi tratada */
@@ -61,7 +78,13 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Parallax effect */
+            /* Disable fixed background on mobile for HUGE performance gains */
+            background-attachment: scroll; 
+        }
+        @media (min-width: 768px) {
+            .hero-bg {
+                background-attachment: fixed; /* Parallax only on destkop */
+            }
         }
         
         /* Dark Navy/Black Gradient Overlay to ensure text legibility */
@@ -124,6 +147,22 @@
         }
         .animate-fade-in-up {
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            /* Force hardware acceleration */
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        
+        /* Mobile Performance Strict Settings */
+        html, body {
+            touch-action: pan-y; /* Hand off scroll to Native OS compositor */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Elements animated by GSAP */
+        .fade-up-element {
+            /* Force hardware acceleration for smooth GPU rendering on mobile */
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
     </style>
 </head>
@@ -253,5 +292,302 @@
 
     </section>
 
+    <!-- 1. ESPECIALIDADES / EXPERTISE SECTION (Light Contrast) -->
+    <section id="especialidades" class="py-24 md:py-32 relative bg-slate-50 overflow-hidden">
+        
+        <!-- Decorative Background Element -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b from-slate-200/50 to-transparent rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20 fade-up-element">
+                <span class="text-gold-500 font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Nossa Expertise</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-navy-900 font-semibold mb-6">Sistemas de Alta Performance.</h2>
+                <p class="text-slate-500 text-lg font-light leading-relaxed">
+                    Desenvolvemos e aplicamos soluções avançadas em engenharia de pisos, garantindo máxima resistência mecânica, química e apelo estético para setores exigentes.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="group bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-md hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] hover:-translate-y-4 transition-all duration-500 fade-up-element delay-100 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-gold-400 opacity-5 blur-[60px] rounded-full group-hover:bg-gold-500 group-hover:opacity-20 transition-all duration-700 pointer-events-none"></div>
+                    <div class="w-16 h-16 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:border-gold-200 transition-colors duration-500 shadow-sm relative z-10 group-hover:scale-110 group-hover:rotate-3">
+                        <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="text-4xl text-navy-800 group-hover:text-gold-500 transition-colors duration-500"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-900 mb-4 relative z-10 tracking-tight">Revestimentos Epóxi</h3>
+                    <p class="text-slate-600 text-base leading-relaxed relative z-10 mb-8 flex-grow">Durabilidade extrema e estética impecável para galpões, garagens corporativas e hospitais. Resistência química e mecânica superior.</p>
+                    
+                    <!-- Sophisticated Inline CTA -->
+                    <a href="#portfolio-epoxi" class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
+                        Ver Obras de Epóxi
+                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/btn:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-md hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] hover:-translate-y-4 transition-all duration-500 fade-up-element delay-200 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-gold-400 opacity-5 blur-[60px] rounded-full group-hover:bg-gold-500 group-hover:opacity-20 transition-all duration-700 pointer-events-none"></div>
+                    <div class="w-16 h-16 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:border-gold-200 transition-colors duration-500 shadow-sm relative z-10 group-hover:scale-110 group-hover:-rotate-3">
+                        <iconify-icon icon="solar:magic-stick-3-bold-duotone" class="text-4xl text-navy-800 group-hover:text-gold-500 transition-colors duration-500"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-900 mb-4 relative z-10 tracking-tight">Polimento de Concreto</h3>
+                    <p class="text-slate-600 text-base leading-relaxed relative z-10 mb-8 flex-grow">Tratamento de endurecimento e lapidação de pisos de concreto, criando superfícies densas, brilhantes e de baixa manutenção.</p>
+                    
+                    <!-- Sophisticated Inline CTA -->
+                    <a href="#portfolio-polimento" class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
+                        Ver Obras de Polimento
+                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/btn:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-md hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] hover:-translate-y-4 transition-all duration-500 fade-up-element delay-300 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-gold-400 opacity-5 blur-[60px] rounded-full group-hover:bg-gold-500 group-hover:opacity-20 transition-all duration-700 pointer-events-none"></div>
+                    <div class="w-16 h-16 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:border-gold-200 transition-colors duration-500 shadow-sm relative z-10 group-hover:scale-110 group-hover:rotate-3">
+                        <iconify-icon icon="solar:shield-warning-bold-duotone" class="text-4xl text-navy-800 group-hover:text-gold-500 transition-colors duration-500"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-900 mb-4 relative z-10 tracking-tight">Poliuretano Especial</h3>
+                    <p class="text-slate-600 text-base leading-relaxed relative z-10 mb-8 flex-grow">Revestimentos ideais para indústrias e frigoríficos, suportando choques térmicos, variações severas de temperatura e alto atrito contínuo.</p>
+                    
+                    <!-- Sophisticated Inline CTA -->
+                    <a href="#portfolio-poliuretano" class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
+                        Ver Obras de Poliuretano
+                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/btn:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-md hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] hover:-translate-y-4 transition-all duration-500 fade-up-element delay-400 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-gold-400 opacity-5 blur-[60px] rounded-full group-hover:bg-gold-500 group-hover:opacity-20 transition-all duration-700 pointer-events-none"></div>
+                    <div class="w-16 h-16 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:border-gold-200 transition-colors duration-500 shadow-sm relative z-10 group-hover:scale-110 group-hover:-rotate-3">
+                        <iconify-icon icon="solar:signpost-2-bold-duotone" class="text-4xl text-navy-800 group-hover:text-gold-500 transition-colors duration-500"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-900 mb-4 relative z-10 tracking-tight">Sinalização Logística</h3>
+                    <p class="text-slate-600 text-base leading-relaxed relative z-10 mb-8 flex-grow">Demarcações de alta visibilidade e durabilidade para otimização de fluxo logístico e segurança exigida nas rigorosas normas técnicas.</p>
+                    
+                    <!-- Sophisticated Inline CTA -->
+                    <a href="#portfolio-sinalizacao" class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
+                        Ver Obras de Sinalização
+                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
+                        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/btn:w-full"></span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SOBRE NÓS / WHY CHOOSE US (Dark Section) -->
+    <section id="sobre" class="py-24 md:py-32 bg-navy-900 relative overflow-hidden">
+        
+        <!-- Abstract Dark Gold Glow -->
+        <div class="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-gold-900/10 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Text / Stats Side -->
+                <div class="fade-up-element">
+                    <span class="text-gold-500 font-bold tracking-[0.2em] uppercase text-sm mb-4 block flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                        Por que a Garex?
+                    </span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white font-semibold mb-8">Precisão e Confiabilidade em cada milímetro quadrado.</h2>
+                    <p class="text-slate-300 text-lg font-light leading-relaxed mb-10">
+                        Na Garex Engenharia, não aplicamos apenas tinta. Nós executamos complexos processos físico-químicos para transformar a base do seu negócio. Utilizamos maquinário pesado importado, resinas de ponta e uma mão de obra rigorosamente treinada. 
+                    </p>
+                    
+                    <!-- Statistics Flow -->
+                    <div class="flex flex-col sm:flex-row gap-10 border-t border-white/10 pt-10">
+                        <div>
+                            <div class="text-4xl font-serif font-bold text-gold-500 mb-2">5+</div>
+                            <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Anos de<br>Mercado</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-serif font-bold text-gold-500 mb-2">200k+</div>
+                            <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Metros²<br>Entregues</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-serif font-bold text-gold-500 mb-2">100+</div>
+                            <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Clientes<br>Satisfeitos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image / Visual Side -->
+                <div class="relative fade-up-element delay-200">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden relative shadow-2xl border border-white/5 group">
+                        <!-- Slideshow Images Wrapper -->
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/garagem%20epoxi%20tratada%20HERO.png')] bg-cover bg-center opacity-80 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/Corredor%20de%20hospital%20Azul%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/Galpao%20com%20epoxi%20e%20caixas%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/Industria%20com%20epoxi%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/Patio%20com%20epoxi%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-[url('../Imagens/Quadra%20de%20futsal%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"></div>
+                        <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000" style="background-image: url('../Imagens/Corredor com epoxi site.png');"></div>
+                        <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000" style="background-image: url('../Imagens/Corredor epoxi verde SITE.png');"></div>
+                        <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000" style="background-image: url('../Imagens/Galpçao logistico com demarcação SITE.png');"></div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-tr from-navy-900/80 via-navy-900/20 to-transparent pointer-events-none"></div>
+                    </div>
+                    
+                    <!-- Floating Premium Warranty Badge -->
+                    <div class="absolute -bottom-8 -left-8 md:-left-12 bg-gradient-to-br from-gold-600 to-gold-700 text-white p-5 pr-8 rounded-2xl shadow-[0_15px_40px_rgba(212,175,55,0.4)] border border-gold-300 transform hover:scale-105 transition-all duration-300 flex items-center gap-4 group/badge">
+                        <div class="relative w-14 h-14 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center shadow-inner border border-white/20">
+                            <!-- Shimmering light inside the icon wrapper -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-[150%] animate-[shimmer_2s_infinite] rounded-full"></div>
+                            <iconify-icon icon="solar:shield-check-bold-duotone" class="text-4xl text-white drop-shadow-md group-hover/badge:scale-110 transition-transform duration-300"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg leading-none mb-1 tracking-wide">Garantia</p>
+                            <p class="font-medium text-gold-100 text-sm leading-tight">De 5 Anos Oficiais.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FOOTER / CONTACT SECTION (Split Design: Navy & Gold side-by-side) -->
+    <footer id="contato" class="relative w-full bg-navy-900 overflow-hidden border-t-2 border-gold-500">
+        <!-- Split Background (50/50 everywhere) -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none flex">
+            <div class="w-1/2 h-full bg-navy-900"></div>
+            <div class="w-1/2 h-full bg-gold-600"></div>
+        </div>
+        
+        <div class="relative w-full max-w-7xl mx-auto py-12 md:py-24 flex flex-row items-stretch justify-center z-10">
+            
+            <!-- Left Section (Navy Side) -->
+            <div class="w-1/2 flex flex-col items-center justify-center px-4 md:px-12 fade-up-element gap-6">
+                <!-- Logo -->
+                <div class="font-serif text-3xl md:text-6xl text-white font-bold tracking-widest leading-none text-center">
+                    GAREX<br>
+                    <span class="text-[10px] md:text-base tracking-[0.4em] font-sans font-medium text-slate-300 ml-1">ENGENHARIA</span>
+                </div>
+                
+                <!-- Prominent Social Icons (Navy Side) -->
+                <div class="flex flex-wrap justify-center gap-3 mt-4 w-full">
+                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="mdi:facebook" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="mdi:instagram" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="mdi:linkedin" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="mdi:youtube" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Section (Gold Side) -->
+            <div class="w-1/2 flex flex-col items-center justify-center px-4 md:px-12 z-20 fade-up-element pt-4">
+                <!-- Navigation -->
+                <nav class="flex flex-col gap-4 md:gap-6 font-bold text-[10px] md:text-sm tracking-[0.15em] uppercase text-white text-right md:text-center w-full items-end md:items-center">
+                    <a href="#" class="hover:text-navy-900 transition-colors relative group/link">
+                        Home
+                        <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="#sobre" class="hover:text-navy-900 transition-colors relative group/link">
+                        Sobre Nós
+                        <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="#especialidades" class="hover:text-navy-900 transition-colors relative group/link">
+                        Especialidades
+                        <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="#portfolio" class="hover:text-navy-900 transition-colors relative group/link">
+                        Portfólio
+                        <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                </nav>
+            </div>
+            
+        </div>
+
+    </footer>
+
+    <!-- Smooth Scrolling & Animation Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Register ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Initialize Lenis for Smooth Scrolling (Optimized for performance and natural feel)
+            const lenis = new Lenis({
+                duration: 0.8, /* Faster, less sluggish */
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), /* Standard ease-out */
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false, /* Force natively butter-smooth touch scrolling on mobile */
+                touchMultiplier: 1.5,
+                infinite: false,
+                wheelMultiplier: 1, /* Reduce heavy scrolling recalculations */
+            });
+            
+            // Re-enable pointer events on the wrapper to ensure touch doesn't get swallowed
+            document.documentElement.style.pointerEvents = 'auto';
+
+            // Connect Lenis with ScrollTrigger
+            lenis.on('scroll', ScrollTrigger.update);
+            
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000); // Standardize GSAP timeline
+            });
+            gsap.ticker.lagSmoothing(0);
+
+            // GSAP Animations for Scroll Elements
+            // Let's set initial states for elements that will fade up
+            gsap.set('.fade-up-element', { y: 40, opacity: 0 });
+
+            // Animate them when they enter the viewport
+            ScrollTrigger.batch(".fade-up-element", {
+                onEnter: batch => gsap.to(batch, {
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    stagger: 0.15, 
+                    ease: "power2.out",
+                    overwrite: true
+                }),
+                onLeaveBack: batch => gsap.to(batch, {
+                    opacity: 0, 
+                    y: 40, 
+                    duration: 0.5,
+                    overwrite: true
+                }),
+                start: "top 85%"
+            });
+
+            // About Us Slideshow Logic (3 seconds interval)
+            const slides = document.querySelectorAll('.slideshow-image');
+            let currentSlide = 0;
+            if (slides.length > 0) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('opacity-80');
+                    slides[currentSlide].classList.add('opacity-0');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.remove('opacity-0');
+                    slides[currentSlide].classList.add('opacity-80');
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>
