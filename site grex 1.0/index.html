@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Site Grex 1.0 - Industrial Flooring</title>
+
+    <!-- Fonts: Playfair and Plus Jakarta Sans from Design System 3 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config for Corporate Professional Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        navy: { 
+                            50: '#f0f4f8',
+                            800: '#1e3a8a', 
+                            900: '#0f172a' 
+                        },
+                        slate: { 
+                            300: '#cbd5e1', 
+                            400: '#94a3b8',
+                            500: '#64748b' 
+                        },
+                        gold: { 
+                            300: '#fde047', 
+                            400: '#eab308',
+                            500: '#d4af37', 
+                            600: '#ca8a04',
+                            700: '#a16207' 
+                        }
+                    },
+                    boxShadow: {
+                        'glass-nav': '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
+                        'gold-glow': '0 4px 20px 0 rgba(212, 175, 55, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+        /* Hero specific styles */
+        .hero-bg {
+            /* Garage Epoxi tratada */
+            background-image: url('../Imagens/garagem epoxi tratada HERO.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Parallax effect */
+        }
+        
+        /* Dark Navy/Black Gradient Overlay to ensure text legibility */
+        .hero-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(15, 23, 42, 0.2), /* Lighter transparency to show image */
+                rgba(15, 23, 42, 0.7)  /* Darker at bottom for smooth transition */
+            );
+        }
+
+        /* Glassmorphism for Navbar (adapted for dark context) */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Gold button shimmer effect */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        /* Initial Load Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Delay Utilities */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500/30 selection:text-white font-sans text-white bg-navy-900">
+
+    <!-- Top Navigation -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl glass-nav rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 shadow-glass-nav">
+        <!-- Logo -->
+        <div class="font-serif font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-sm bg-gold-500 rotate-45 border border-gold-300"></span>
+            Garex <span class="font-normal italic text-slate-300">Engenharia</span>
+        </div>
+        
+        <!-- Center Links -->
+        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+            <a href="#" class="hover:text-gold-500 transition-colors">Especialidades</a>
+            <a href="#" class="hover:text-gold-500 transition-colors">Sistemas</a>
+            <a href="#" class="hover:text-gold-500 transition-colors">Portfólio</a>
+            <a href="#" class="hover:text-gold-500 transition-colors">Sobre Nós</a>
+        </div>
+        
+        <!-- Right CTA CTA -->
+        <button class="bg-transparent border border-gold-500 text-gold-500 px-6 py-2 rounded-full text-sm font-semibold hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
+            Contato
+        </button>
+    </nav>
+
+    <!-- FULL SCREEN HERO SECTION -->
+    <section class="relative w-full h-screen min-h-[650px] flex items-center justify-center hero-bg overflow-hidden flex flex-col">
+        
+        <!-- Dark Gradient Overlay -->
+        <div class="absolute inset-0 hero-overlay z-0"></div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center mt-12 flex flex-col items-center justify-center">
+            
+            <!-- Eyebrow Tag -->
+            <div class="mb-8 opacity-0 animate-fade-in-up">
+                <span class="px-5 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase text-gold-500 border border-gold-500/30 shadow-sm flex items-center gap-2 bg-navy-900/40 backdrop-blur-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                    Excelência em Engenharia
+                </span>
+            </div>
+
+            <!-- Headline (Playfair) -->
+            <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6 leading-[1.15] opacity-0 animate-fade-in-up delay-100 max-w-3xl drop-shadow-lg">
+                Soluções em Pisos Industriais para Espaços de <span class="italic text-gold-500 font-medium">Alta Performance</span>.
+            </h1>
+
+            <!-- Subtitle (Plus Jakarta) -->
+            <p class="text-lg md:text-xl text-slate-200 leading-relax font-light mb-12 max-w-2xl opacity-0 animate-fade-in-up delay-200 drop-shadow-md">
+                Especialistas em revestimentos epóxi, polimento de concreto e sistemas de pisos industriais com <strong class="text-white font-medium">durabilidade e precisão</strong>.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 items-center opacity-0 animate-fade-in-up delay-300">
+                
+                <!-- Primary CTA (Gold) -->
+                <button class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden">
+                    <!-- Shimmer light effect -->
+                    <span class="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                    
+                    <span class="relative z-10 flex items-center gap-2">
+                        Solicitar Orçamento
+                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-xl transition-transform group-hover:translate-x-1"></iconify-icon>
+                    </span>
+                </button>
+                
+                <!-- Secondary Link -->
+                <a href="#" class="text-sm font-semibold text-slate-300 hover:text-gold-500 transition-colors uppercase tracking-[0.15em] flex items-center gap-3 pb-1 group/link group relative">
+                    <iconify-icon icon="solar:play-circle-bold-duotone" class="text-2xl text-gold-500 group-hover:scale-110 transition-transform"></iconify-icon>
+                    Ver Nosso Processo
+                    <div class="w-0 h-[1px] bg-gold-500 absolute bottom-0 right-0 group-hover/link:w-full group-hover/link:left-0 transition-all duration-300"></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator (Bottom) -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-fade-in-up delay-500">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transform -rotate-90 origin-bottom whitespace-nowrap mb-6">Role para descobrir</span>
+            <div class="w-[1px] h-16 bg-gradient-to-b from-slate-400/50 to-transparent"></div>
+        </div>
+
+    </section>
+
+</body>
+</html>
