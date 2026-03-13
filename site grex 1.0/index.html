@@ -68,8 +68,8 @@
         .hero-overlay {
             background: linear-gradient(
                 to bottom,
-                rgba(15, 23, 42, 0.2), /* Lighter transparency to show image */
-                rgba(15, 23, 42, 0.7)  /* Darker at bottom for smooth transition */
+                rgba(15, 23, 42, 0.1), /* Lighter transparency to show image very clearly */
+                rgba(15, 23, 42, 0.5)  /* Darker at bottom for smooth transition, but much lighter */
             );
         }
 
@@ -86,8 +86,38 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(200%); }
         }
+        
+        /* Header specific animations */
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translate(-50%, -100%); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
 
-        /* Initial Load Animations */
+        /* Initial Load Animations (for other elements) */
+        @keyframes textReveal {
+            0% { transform: translateY(100%); opacity: 0; filter: blur(8px); }
+            100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+        }
+        .reveal-wrap {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: 0.15em; /* Prevents descender cutoffs (like in p, g, j) */
+            margin-bottom: -0.15em;
+        }
+        .reveal-word {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            filter: blur(8px);
+            animation: textReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Initial Load Animations (for other elements) */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -95,36 +125,53 @@
         .animate-fade-in-up {
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
-        /* Delay Utilities */
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-500 { animation-delay: 500ms; }
     </style>
 </head>
 <body class="antialiased selection:bg-gold-500/30 selection:text-white font-sans text-white bg-navy-900">
 
-    <!-- Top Navigation -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl glass-nav rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 shadow-glass-nav">
-        <!-- Logo -->
-        <div class="font-serif font-bold text-2xl tracking-tight text-white flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-sm bg-gold-500 rotate-45 border border-gold-300"></span>
-            Garex <span class="font-normal italic text-slate-300">Engenharia</span>
+    <!-- Top Navigation (Animated Dropdown on Load) -->
+    <nav class="fixed top-6 left-1/2 z-50 w-[95%] max-w-7xl glass-nav rounded-full px-4 py-3 md:px-6 md:py-4 flex justify-between items-center transition-all duration-500 shadow-glass-nav border border-gold-500/20 animate-[navSlideDown_1s_ease-out_forwards]" style="transform: translateX(-50%);">
+        
+        <!-- Elaborate Logo -->
+        <a href="#" class="font-serif tracking-tight text-white flex items-center gap-3 group relative transform transition-transform duration-500 hover:scale-[1.02]">
+            <!-- Complex Spinning/Pulsing icon -->
+            <div class="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                <span class="absolute w-full h-full rounded-sm bg-gold-500/20 animate-ping"></span>
+                <span class="absolute w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm bg-gold-500 border border-gold-300 shadow-gold-glow animate-[spin_4s_linear_infinite] group-hover:scale-125 transition-transform duration-300"></span>
+                <span class="absolute w-1.5 h-1.5 rounded-sm bg-white animate-[spin_4s_linear_infinite_reverse]"></span>
+            </div>
+                <div class="relative overflow-hidden inline-flex flex-col md:flex-row md:items-baseline gap-1 md:gap-1.5">
+                    <span class="font-bold text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-white drop-shadow-md">Garex</span>
+                    <span class="font-medium italic text-gold-500 text-sm md:text-xl tracking-wide group-hover:text-gold-300 transition-colors duration-300 drop-shadow-sm">Engenharia</span>
+                    <!-- Continuous slow shimmer on the text -->
+                    <span class="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] animate-[shimmer_3s_infinite]"></span>
+                </div>
+            </a>
+        
+        <!-- Center Links with Underline Animation -->
+        <div class="hidden lg:flex gap-10 text-sm font-medium text-slate-300">
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
+                Especialidades
+                <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
+            </a>
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
+                Portfólio
+                <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
+            </a>
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
+                Sobre Nós
+                <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
+            </a>
         </div>
         
-        <!-- Center Links -->
-        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-            <a href="#" class="hover:text-gold-500 transition-colors">Especialidades</a>
-            <a href="#" class="hover:text-gold-500 transition-colors">Sistemas</a>
-            <a href="#" class="hover:text-gold-500 transition-colors">Portfólio</a>
-            <a href="#" class="hover:text-gold-500 transition-colors">Sobre Nós</a>
-        </div>
-        
-        <!-- Right CTA CTA -->
-        <button class="bg-transparent border border-gold-500 text-gold-500 px-6 py-2 rounded-full text-sm font-semibold hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
-            Contato
-        </button>
+        <!-- Emphasized Contact CTA -->
+        <a href="#contato" class="group relative overflow-hidden inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 text-sm md:text-base font-bold text-navy-900 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full shadow-gold-glow hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5 border border-gold-300">
+            <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
+            <span class="relative flex items-center gap-2">
+                <span class="hidden md:inline">Falar com</span> Especialista
+                <iconify-icon icon="solar:phone-calling-bold-duotone" class="text-xl group-hover:animate-[wiggle_1s_ease-in-out_infinite]"></iconify-icon>
+            </span>
+        </a>
     </nav>
 
     <!-- FULL SCREEN HERO SECTION -->
@@ -137,41 +184,63 @@
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center mt-12 flex flex-col items-center justify-center">
             
             <!-- Eyebrow Tag -->
-            <div class="mb-8 opacity-0 animate-fade-in-up">
+            <div class="mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 100ms;">
                 <span class="px-5 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase text-gold-500 border border-gold-500/30 shadow-sm flex items-center gap-2 bg-navy-900/40 backdrop-blur-md">
                     <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
                     Excelência em Engenharia
                 </span>
             </div>
 
-            <!-- Headline (Playfair) -->
-            <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6 leading-[1.15] opacity-0 animate-fade-in-up delay-100 max-w-3xl drop-shadow-lg">
-                Soluções em Pisos Industriais para Espaços de <span class="italic text-gold-500 font-medium">Alta Performance</span>.
+            <!-- Headline (Playfair) with Cinematic Stagger -->
+            <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6 leading-[1.15] max-w-3xl drop-shadow-lg">
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 200ms;">Soluções</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 280ms;">em</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 360ms;">Pisos</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 440ms;">Industriais</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 520ms;">para</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 600ms;">Espaços</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 680ms;">de</span></span>
+                <span class="reveal-wrap"><span class="reveal-word italic text-gold-500 font-medium" style="animation-delay: 760ms;">Alta</span></span>
+                <span class="reveal-wrap"><span class="reveal-word italic text-gold-500 font-medium" style="animation-delay: 840ms;">Performance.</span></span>
             </h1>
 
-            <!-- Subtitle (Plus Jakarta) -->
-            <p class="text-lg md:text-xl text-slate-200 leading-relax font-light mb-12 max-w-2xl opacity-0 animate-fade-in-up delay-200 drop-shadow-md">
-                Especialistas em revestimentos epóxi, polimento de concreto e sistemas de pisos industriais com <strong class="text-white font-medium">durabilidade e precisão</strong>.
+            <!-- Subtitle (Plus Jakarta) with Cinematic Stagger -->
+            <p class="text-lg md:text-xl text-slate-200 leading-relax font-light mb-12 max-w-2xl drop-shadow-md">
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1000ms;">Especialistas</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1050ms;">em</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1100ms;">revestimentos</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1150ms;">epóxi,</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1200ms;">polimento</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1250ms;">de</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1300ms;">concreto</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1350ms;">e</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1400ms;">sistemas</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1450ms;">de</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1500ms;">pisos</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1550ms;">industriais</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1600ms;">com</span></span>
+                <span class="reveal-wrap"><strong class="reveal-word text-white font-medium" style="animation-delay: 1650ms;">durabilidade</strong></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1700ms;">e</span></span>
+                <span class="reveal-wrap"><strong class="reveal-word text-white font-medium" style="animation-delay: 1750ms;">precisão.</strong></span>
             </p>
 
             <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row gap-6 items-center opacity-0 animate-fade-in-up delay-300">
+            <div class="flex flex-col sm:flex-row gap-6 items-center opacity-0 animate-fade-in-up" style="animation-delay: 1500ms;">
                 
-                <!-- Primary CTA (Gold) -->
-                <button class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden">
+                <!-- Primary CTA (Gold) - Comprar/Orçamento -->
+                <a href="#comprar" class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden">
                     <!-- Shimmer light effect -->
                     <span class="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
                     
                     <span class="relative z-10 flex items-center gap-2">
-                        Solicitar Orçamento
-                        <iconify-icon icon="solar:arrow-right-line-duotone" class="text-xl transition-transform group-hover:translate-x-1"></iconify-icon>
+                        Solicitar um Orçamento
                     </span>
-                </button>
+                </a>
                 
                 <!-- Secondary Link -->
-                <a href="#" class="text-sm font-semibold text-slate-300 hover:text-gold-500 transition-colors uppercase tracking-[0.15em] flex items-center gap-3 pb-1 group/link group relative">
+                <a href="#video" class="text-sm font-semibold text-slate-300 hover:text-gold-500 transition-colors uppercase tracking-[0.15em] flex items-center gap-3 pb-1 group/link group relative">
                     <iconify-icon icon="solar:play-circle-bold-duotone" class="text-2xl text-gold-500 group-hover:scale-110 transition-transform"></iconify-icon>
-                    Ver Nosso Processo
+                    Ver o Processo
                     <div class="w-0 h-[1px] bg-gold-500 absolute bottom-0 right-0 group-hover/link:w-full group-hover/link:left-0 transition-all duration-300"></div>
                 </a>
             </div>
@@ -179,7 +248,6 @@
 
         <!-- Scroll Indicator (Bottom) -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-fade-in-up delay-500">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transform -rotate-90 origin-bottom whitespace-nowrap mb-6">Role para descobrir</span>
             <div class="w-[1px] h-16 bg-gradient-to-b from-slate-400/50 to-transparent"></div>
         </div>
 
