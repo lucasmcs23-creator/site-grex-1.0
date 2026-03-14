@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Site Grex 1.0 - Industrial Flooring</title>
-    <!-- Preload Hero Image -->
-    <link rel="preload" as="image" href="../Imagens/garagem epoxi tratada HERO.webp">
 
     <!-- Fonts: Playfair and Plus Jakarta Sans from Design System 3 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +54,7 @@
     </script>
 
     <!-- Iconify -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
         /* Lenis Required Styles for Smooth Scrolling */
@@ -84,7 +82,7 @@
         /* Hero specific styles */
         .hero-bg {
             /* Garage Epoxi tratada */
-            background-image: url('../Imagens/garagem epoxi tratada HERO.webp');
+            background-image: url('../Imagens/garagem epoxi tratada HERO.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -120,23 +118,24 @@
         /* Gold button shimmer effect */
         @keyframes shimmer {
             0% {
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
             }
 
             100% {
-                transform: translate3d(200%, 0, 0);
+                transform: translateX(200%);
             }
         }
 
+        /* Header specific animations */
         @keyframes navSlideDown {
             from {
                 opacity: 0;
-                transform: translate3d(-50%, -100%, 0);
+                transform: translate(-50%, -100%);
             }
 
             to {
                 opacity: 1;
-                transform: translate3d(-50%, 0, 0);
+                transform: translate(-50%, 0);
             }
         }
 
@@ -155,13 +154,13 @@
         /* Initial Load Animations (for other elements) */
         @keyframes textReveal {
             0% {
-                transform: translate3d(0, 100%, 0);
+                transform: translateY(100%);
                 opacity: 0;
                 filter: blur(8px);
             }
 
             100% {
-                transform: translate3d(0, 0, 0);
+                transform: translateY(0);
                 opacity: 1;
                 filter: blur(0);
             }
@@ -178,23 +177,22 @@
 
         .reveal-word {
             display: inline-block;
-            transform: translate3d(0, 100%, 0);
+            transform: translateY(100%);
             opacity: 0;
             filter: blur(8px);
             animation: textReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            will-change: transform, opacity;
         }
 
         /* Initial Load Animations (for other elements) */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translate3d(0, 30px, 0);
+                transform: translateY(30px);
             }
 
             to {
                 opacity: 1;
-                transform: translate3d(0, 0, 0);
+                transform: translateY(0);
             }
         }
 
@@ -251,17 +249,17 @@
 
         <!-- Center Links with Underline Animation -->
         <div class="hidden lg:flex gap-10 text-sm font-medium text-slate-300">
-            <a href="#especialidades" class="relative group/link hover:text-white transition-colors py-2">
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
                 Especialidades
                 <span
                     class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
             </a>
-            <a href="portfolio.html" class="relative group/link hover:text-white transition-colors py-2">
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
                 Portfólio
                 <span
                     class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
             </a>
-            <a href="#sobre" class="relative group/link hover:text-white transition-colors py-2">
+            <a href="#" class="relative group/link hover:text-white transition-colors py-2">
                 Sobre Nós
                 <span
                     class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
@@ -269,7 +267,7 @@
         </div>
 
         <!-- Emphasized Contact CTA -->
-        <a href="https://wa.me/5562992166426?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Garex!" target="_blank"
+        <a href="#contato"
             class="group relative overflow-hidden inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 text-sm md:text-base font-bold text-navy-900 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full shadow-gold-glow hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5 border border-gold-300">
             <span
                 class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
@@ -283,7 +281,7 @@
 
     <!-- FULL SCREEN HERO SECTION -->
     <section
-        class="relative w-full min-h-[100svh] md:min-h-[650px] py-24 md:py-0 flex items-center justify-center hero-bg overflow-hidden flex-col">
+        class="relative w-full h-screen min-h-[650px] flex items-center justify-center hero-bg overflow-hidden flex flex-col">
 
         <!-- Dark Gradient Overlay -->
         <div class="absolute inset-0 hero-overlay z-0"></div>
@@ -302,7 +300,7 @@
 
             <!-- Headline (Playfair) with Cinematic Stagger -->
             <h1
-                class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-4 md:mb-6 leading-[1.15] max-w-3xl drop-shadow-lg">
+                class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6 leading-[1.15] max-w-3xl drop-shadow-lg">
                 <span class="reveal-wrap"><span class="reveal-word"
                         style="animation-delay: 200ms;">Soluções</span></span>
                 <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 280ms;">em</span></span>
@@ -320,54 +318,58 @@
             </h1>
 
             <!-- Subtitle (Plus Jakarta) with Cinematic Stagger -->
-            <p class="text-base sm:text-lg md:text-xl text-slate-200 leading-relax font-light mb-8 md:mb-12 max-w-2xl drop-shadow-md px-2 md:px-0">
+            <p class="text-lg md:text-xl text-slate-200 leading-relax font-light mb-12 max-w-2xl drop-shadow-md">
                 <span class="reveal-wrap"><span class="reveal-word"
                         style="animation-delay: 1000ms;">Especialistas</span></span>
                 <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1050ms;">em</span></span>
                 <span class="reveal-wrap"><span class="reveal-word"
-                        style="animation-delay: 1100ms;">revitalização</span></span>
-                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1150ms;">de</span></span>
-                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1200ms;">pisos</span></span>
-                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1250ms;">para</span></span>
-                <span class="reveal-wrap"><span class="reveal-word text-white font-medium"
-                        style="animation-delay: 1300ms;">galpões,</span></span>
-                <span class="reveal-wrap"><span class="reveal-word text-white font-medium"
-                        style="animation-delay: 1350ms;">garagens</span></span>
-                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1400ms;">e</span></span>
-                <span class="reveal-wrap"><span class="reveal-word text-white font-medium" style="animation-delay: 1450ms;">indústrias</span></span>
+                        style="animation-delay: 1100ms;">revestimentos</span></span>
                 <span class="reveal-wrap"><span class="reveal-word"
-                        style="animation-delay: 1500ms;">com</span></span>
-                <span class="reveal-wrap"><strong class="reveal-word text-gold-400 font-bold"
-                        style="animation-delay: 1550ms;">durabilidade</strong></span>
-                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1600ms;">e</span></span>
-                <span class="reveal-wrap"><strong class="reveal-word text-gold-400 font-bold"
-                        style="animation-delay: 1650ms;">precisão.</strong></span>
+                        style="animation-delay: 1150ms;">epóxi,</span></span>
+                <span class="reveal-wrap"><span class="reveal-word"
+                        style="animation-delay: 1200ms;">polimento</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1250ms;">de</span></span>
+                <span class="reveal-wrap"><span class="reveal-word"
+                        style="animation-delay: 1300ms;">concreto</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1350ms;">e</span></span>
+                <span class="reveal-wrap"><span class="reveal-word"
+                        style="animation-delay: 1400ms;">sistemas</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1450ms;">de</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1500ms;">pisos</span></span>
+                <span class="reveal-wrap"><span class="reveal-word"
+                        style="animation-delay: 1550ms;">industriais</span></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1600ms;">com</span></span>
+                <span class="reveal-wrap"><strong class="reveal-word text-white font-medium"
+                        style="animation-delay: 1650ms;">durabilidade</strong></span>
+                <span class="reveal-wrap"><span class="reveal-word" style="animation-delay: 1700ms;">e</span></span>
+                <span class="reveal-wrap"><strong class="reveal-word text-white font-medium"
+                        style="animation-delay: 1750ms;">precisão.</strong></span>
             </p>
 
             <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center opacity-0 animate-fade-in-up w-full px-4"
+            <div class="flex flex-col sm:flex-row gap-6 items-center opacity-0 animate-fade-in-up"
                 style="animation-delay: 1500ms;">
 
                 <!-- Primary CTA (Gold) - Comprar/Orçamento -->
-                <a href="https://wa.me/5562992166426?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20projeto!" target="_blank"
-                    class="group relative inline-flex items-center justify-center px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden w-full sm:w-auto">
+                <a href="#comprar"
+                    class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden">
                     <!-- Shimmer light effect -->
                     <span
                         class="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
 
-                    <span class="relative z-10 flex items-center justify-center gap-2">
+                    <span class="relative z-10 flex items-center gap-2">
                         Solicitar um Orçamento
                     </span>
                 </a>
 
                 <!-- Secondary Link -->
                 <a href="#video"
-                    class="text-xs sm:text-sm font-semibold text-slate-300 hover:text-gold-500 transition-colors uppercase tracking-[0.15em] flex items-center justify-center gap-2 sm:gap-3 py-2 w-full sm:w-auto group/link group relative">
+                    class="text-sm font-semibold text-slate-300 hover:text-gold-500 transition-colors uppercase tracking-[0.15em] flex items-center gap-3 pb-1 group/link group relative">
                     <iconify-icon icon="solar:play-circle-bold-duotone"
-                        class="text-xl sm:text-2xl text-gold-500 group-hover:scale-110 transition-transform"></iconify-icon>
+                        class="text-2xl text-gold-500 group-hover:scale-110 transition-transform"></iconify-icon>
                     Ver o Processo
                     <div
-                        class="w-0 h-[1px] bg-gold-500 absolute bottom-1 left-1/2 -translate-x-1/2 group-hover/link:w-full transition-all duration-300">
+                        class="w-0 h-[1px] bg-gold-500 absolute bottom-0 right-0 group-hover/link:w-full group-hover/link:left-0 transition-all duration-300">
                     </div>
                 </a>
             </div>
@@ -424,7 +426,7 @@
                         química e mecânica superior.</p>
 
                     <!-- Sophisticated Inline CTA -->
-                    <a href="portfolio.html#epoxi"
+                    <a href="#portfolio-epoxi"
                         class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
                         Ver Obras de Epóxi
                         <iconify-icon icon="solar:arrow-right-line-duotone"
@@ -452,7 +454,7 @@
                         baixa manutenção.</p>
 
                     <!-- Sophisticated Inline CTA -->
-                    <a href="portfolio.html#polimento"
+                    <a href="#portfolio-polimento"
                         class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
                         Ver Obras de Polimento
                         <iconify-icon icon="solar:arrow-right-line-duotone"
@@ -474,15 +476,15 @@
                             class="text-4xl text-navy-800 group-hover:text-gold-500 transition-colors duration-500"></iconify-icon>
                     </div>
                     <h3 class="font-serif text-2xl font-bold text-navy-900 mb-4 relative z-10 tracking-tight">
-                        Uretano Especial</h3>
+                        Poliuretano Especial</h3>
                     <p class="text-slate-600 text-base leading-relaxed relative z-10 mb-8 flex-grow">Revestimentos
                         ideais para indústrias e frigoríficos, suportando choques térmicos, variações severas de
                         temperatura e alto atrito contínuo.</p>
 
                     <!-- Sophisticated Inline CTA -->
-                    <a href="portfolio.html#poliuretano"
+                    <a href="#portfolio-poliuretano"
                         class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
-                        Ver Obras de Uretano
+                        Ver Obras de Poliuretano
                         <iconify-icon icon="solar:arrow-right-line-duotone"
                             class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
                         <span
@@ -508,7 +510,7 @@
                         normas técnicas.</p>
 
                     <!-- Sophisticated Inline CTA -->
-                    <a href="portfolio.html#sinalizacao"
+                    <a href="#portfolio-sinalizacao"
                         class="inline-flex items-center gap-2 text-sm font-bold text-navy-800 group-hover:text-gold-600 transition-colors mt-auto relative w-fit group/btn">
                         Ver Obras de Sinalização
                         <iconify-icon icon="solar:arrow-right-line-duotone"
@@ -574,29 +576,29 @@
                         class="aspect-[4/5] rounded-2xl overflow-hidden relative shadow-2xl border border-white/5 group">
                         <!-- Slideshow Images Wrapper -->
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/garagem%20epoxi%20tratada%20HERO.webp')] bg-cover bg-center opacity-80 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/garagem%20epoxi%20tratada%20HERO.png')] bg-cover bg-center opacity-80 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Corredor%20de%20hospital%20Azul%20SITE.webp')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Corredor%20de%20hospital%20Azul%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Galpao%20com%20epoxi%20e%20caixas%20SITE.webp')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Galpao%20com%20epoxi%20e%20caixas%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Industria%20com%20epoxi%20SITE.webp')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Industria%20com%20epoxi%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Patio%20com%20epoxi%20SITE.webp')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Patio%20com%20epoxi%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div
-                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Quadra%20de%20futsal%20SITE.webp')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
+                            class="slideshow-image absolute inset-0 bg-[url('../Imagens/Quadra%20de%20futsal%20SITE.png')] bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000">
                         </div>
                         <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"
-                            style="background-image: url('../Imagens/Corredor com epoxi site.webp');"></div>
+                            style="background-image: url('../Imagens/Corredor com epoxi site.png');"></div>
                         <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"
-                            style="background-image: url('../Imagens/Corredor epoxi verde SITE.webp');"></div>
+                            style="background-image: url('../Imagens/Corredor epoxi verde SITE.png');"></div>
                         <div class="slideshow-image absolute inset-0 bg-cover bg-center opacity-0 mix-blend-luminosity transform group-hover:scale-105 transition-all duration-1000"
-                            style="background-image: url('../Imagens/Galpçao logistico com demarcação SITE.webp');">
+                            style="background-image: url('../Imagens/Galpçao logistico com demarcação SITE.png');">
                         </div>
 
                         <div
@@ -692,7 +694,7 @@
                         <span
                             class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
                     </a>
-                    <a href="portfolio.html" class="hover:text-navy-900 transition-colors relative group/link">
+                    <a href="#portfolio" class="hover:text-navy-900 transition-colors relative group/link">
                         Portfólio
                         <span
                             class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
@@ -704,27 +706,27 @@
 
     </footer>
 
-    <!-- Smooth Scrolling & Animation Scripts (Deferred for Performance) -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <!-- Smooth Scrolling & Animation Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Register ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
 
-            // Initialize Lenis for Smooth Scrolling (Highly Optimized for Mobile/Performance)
+            // Initialize Lenis for Smooth Scrolling (Optimized for performance and natural feel)
             const lenis = new Lenis({
-                duration: 0.6, /* Much faster, snapping feel, less sluggish */
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                duration: 0.8, /* Faster, less sluggish */
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), /* Standard ease-out */
                 direction: 'vertical',
                 gestureDirection: 'vertical',
                 smooth: true,
-                smoothTouch: false, /* Native scrolling on touch devices (crucial for mobile performance) */
-                touchMultiplier: 2, /* Faster touch response */
+                smoothTouch: false, /* Force natively butter-smooth touch scrolling on mobile */
+                touchMultiplier: 1.5,
                 infinite: false,
-                wheelMultiplier: 1.2, /* Snappier mouse wheel */
+                wheelMultiplier: 1, /* Reduce heavy scrolling recalculations */
             });
 
             // Re-enable pointer events on the wrapper to ensure touch doesn't get swallowed
@@ -742,18 +744,23 @@
             // Let's set initial states for elements that will fade up
             gsap.set('.fade-up-element', { y: 40, opacity: 0 });
 
-            // Animate them when they enter the viewport (Optimized intersection batching)
+            // Animate them when they enter the viewport
             ScrollTrigger.batch(".fade-up-element", {
                 onEnter: batch => gsap.to(batch, {
                     opacity: 1,
                     y: 0,
-                    duration: 0.6, /* Faster animation */
-                    stagger: 0.1, /* Quicker stagger */
+                    duration: 0.8,
+                    stagger: 0.15,
                     ease: "power2.out",
                     overwrite: true
                 }),
-                start: "top 90%", /* Trigger slightly earlier so it's ready when scrolling fast */
-                // Removed onLeaveBack to save performance. Once visible, stay visible.
+                onLeaveBack: batch => gsap.to(batch, {
+                    opacity: 0,
+                    y: 40,
+                    duration: 0.5,
+                    overwrite: true
+                }),
+                start: "top 85%"
             });
 
             // About Us Slideshow Logic (3 seconds interval)
@@ -773,4 +780,3 @@
 </body>
 
 </html>
-
