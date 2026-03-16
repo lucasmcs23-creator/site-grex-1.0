@@ -211,6 +211,7 @@
             touch-action: pan-y;
             /* Hand off scroll to Native OS compositor */
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: none;
         }
 
         /* Elements animated by GSAP */
@@ -229,7 +230,7 @@
         style="transform: translateX(-50%);">
 
         <!-- Elaborate Logo -->
-        <a href="#"
+        <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
             class="font-serif tracking-tight text-white flex items-center gap-3 group relative transform transition-transform duration-500 hover:scale-[1.02]">
             <!-- Complex Spinning/Pulsing icon -->
             <div class="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
@@ -649,24 +650,29 @@
 
                 <!-- Prominent Social Icons (Navy Side) -->
                 <div class="flex flex-wrap justify-center gap-3 mt-4 w-full">
-                    <a href="#"
+                    <a href="javascript:void(0)"
                         class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:facebook"
                             class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#"
+                    <a href="https://www.instagram.com/garexengenharia/" target="_blank"
                         class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:instagram"
                             class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#"
+                    <a href="javascript:void(0)"
                         class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:linkedin"
                             class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#"
+                    <a href="https://www.youtube.com/@GarexEngenharia" target="_blank"
                         class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:youtube"
+                            class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                    <a href="https://www.tiktok.com/@garexengenharia?is_from_webapp=1&sender_device=pc" target="_blank"
+                        class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="bi:tiktok"
                             class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
                 </div>
@@ -677,7 +683,7 @@
                 <!-- Navigation -->
                 <nav
                     class="flex flex-col gap-4 md:gap-6 font-bold text-[10px] md:text-sm tracking-[0.15em] uppercase text-white text-right md:text-center w-full items-end md:items-center">
-                    <a href="#" class="hover:text-navy-900 transition-colors relative group/link">
+                    <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-navy-900 transition-colors relative group/link">
                         Home
                         <span
                             class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
@@ -713,6 +719,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Register ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
+
+            // Prevent jumpy behavior on mobile when browser UI hides/shows
+            ScrollTrigger.config({ ignoreMobileResize: true });
 
             // Initialize Lenis for Smooth Scrolling (Highly Optimized for Mobile/Performance)
             const lenis = new Lenis({

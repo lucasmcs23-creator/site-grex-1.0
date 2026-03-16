@@ -167,6 +167,14 @@
             backface-visibility: hidden;
         }
 
+        /* Mobile Performance Strict Settings */
+        html,
+        body {
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: none;
+        }
+
         /* Placeholder styles for portfolio images */
         .img-placeholder {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -243,7 +251,7 @@
                 <span
                     class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover/link:w-full shadow-gold-glow"></span>
             </a>
-            <a href="#" class="relative group/link text-white transition-colors py-2">
+            <a href="javascript:void(0)" class="relative group/link text-white transition-colors py-2">
                 Portfólio
                 <span
                     class="absolute bottom-0 left-0 w-full h-[2px] bg-gold-500 shadow-gold-glow"></span>
@@ -601,17 +609,20 @@
                 </div>
                 <!-- Prominent Social Icons -->
                 <div class="flex flex-wrap justify-center gap-3 mt-4 w-full">
-                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <a href="javascript:void(0)" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:facebook" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <a href="https://www.instagram.com/garexengenharia/" target="_blank" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:instagram" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <a href="javascript:void(0)" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:linkedin" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
-                    <a href="#" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <a href="https://www.youtube.com/@GarexEngenharia" target="_blank" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
                         <iconify-icon icon="mdi:youtube" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
+                    </a>
+                    <a href="https://www.tiktok.com/@garexengenharia?is_from_webapp=1&sender_device=pc" target="_blank" class="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold-500 hover:border-gold-400 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                        <iconify-icon icon="bi:tiktok" class="text-lg md:text-2xl text-slate-300 group-hover:text-navy-900 transition-colors"></iconify-icon>
                     </a>
                 </div>
             </div>
@@ -630,7 +641,7 @@
                         Especialidades
                         <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-navy-900 transition-all duration-300 group-hover/link:w-full"></span>
                     </a>
-                    <a href="#" class="hover:text-navy-900 transition-colors relative group/link text-navy-900 underline decoration-2 underline-offset-4">
+                    <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-navy-900 transition-colors relative group/link text-navy-900 underline decoration-2 underline-offset-4">
                         Portfólio
                     </a>
                 </nav>
@@ -646,6 +657,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
+            
+            // Prevent jumpy behavior on mobile when browser UI hides/shows
+            ScrollTrigger.config({ ignoreMobileResize: true });
 
             const lenis = new Lenis({
                 duration: 0.6, /* Much faster, snapping feel, less sluggish */
