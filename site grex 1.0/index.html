@@ -17,8 +17,26 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Garex Engenharia" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./favicon-grande.png" />
+    <!-- Google Analytics 4 (GA4) + Google Ads Tracking -->
+    <!-- CÓDIGO GOOGLE ADS REAL VAI EM 'AW-XXXXXXXXXX' QUANDO FOR USAR -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMFRLKKHB1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Configuração base do GA4
+      gtag('config', 'G-RMFRLKKHB1');
+      
+      // Configuração do Google Ads (Descomente qnd for rodar anúncios)
+      // gtag('config', 'AW-XXXXXXXXXX'); 
+    </script>
+
+    <!-- Favicon Override for Google Search and Apple -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-grande.png?v=3" />
+    <link rel="shortcut icon" href="/favicon-grande.png?v=3" />
+    <link rel="apple-touch-icon" href="/favicon-grande.png?v=3" />
+    <meta name="apple-mobile-web-app-title" content="Garex" />
     <!-- Preload Hero Image -->
     <link rel="preload" as="image" href="./assets/img/garagem-epoxi-tratada-hero.webp" fetchpriority="high">
 
@@ -282,6 +300,7 @@
 
         <!-- Emphasized Contact CTA -->
         <a href="https://wa.me/5562992166426?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Garex!" target="_blank"
+            onclick="gtag('event', 'generate_lead', {'event_category': 'WhatsApp', 'event_label': 'Botao_Nav_Especialista'});"
             class="group relative overflow-hidden inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 text-sm md:text-base font-bold text-navy-900 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full shadow-gold-glow hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5 border border-gold-300">
             <span
                 class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]"></span>
@@ -362,6 +381,7 @@
 
                 <!-- Primary CTA (Gold) - Comprar/Orçamento -->
                 <a href="https://wa.me/5562992166426?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20projeto!" target="_blank"
+                    onclick="gtag('event', 'generate_lead', {'event_category': 'WhatsApp', 'event_label': 'Botao_Hero_Orcamento'});"
                     class="group relative inline-flex items-center justify-center px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-navy-900 bg-gold-500 border border-gold-400 rounded-lg shadow-gold-glow transition-all hover:-translate-y-1 overflow-hidden w-full sm:w-auto">
                     <!-- Shimmer light effect -->
                     <span
